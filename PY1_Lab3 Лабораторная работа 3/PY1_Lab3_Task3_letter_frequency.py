@@ -4,8 +4,9 @@ RU_ALPHABET_STRING = "абвгдеёжзийклмнопрстуфхцчшщъы
 # Remove all non aplhabet symbols
 def remove_non_alphabet_symbols(text):
     # Using regular exressions to delete all non alphabet symbols
-    # Replace everything that is not from [А-Яа-я] with '' in text
-    return re.sub("[^А-Яа-я]", '', text)
+    # Replace everything that is not from [А-Яа-яё] with '' in text
+    # UPDATE: "ё" added
+    return re.sub("[^А-Яа-яё]", '', text)
 
 # Make dictionary with letters as keys and its occurences as values 
 def make_letters_count_dict(text):
@@ -13,9 +14,7 @@ def make_letters_count_dict(text):
 
     # Go through the Russian alphabet that has a CONST length and check if the letter appeared in the text.
 
-    # P.S. Ответ на Степике имеет другой порядк букв, так как алгоритм, видимо, основан на анализе букв подряд из текста.
-    # Однако данный цикл работает за O(1), а не за O(N), где N - длина текста, так как мы вынуждены проверят каждую букву.
-    # К тому же про порядок букв в задании ничего не сказано
+    # UPDATE: Перемудрил с вопросом о сложности, вопрос снят
     for letter in RU_ALPHABET_STRING:
         # If YES -> add in a dictionary
         if(letter in text):
