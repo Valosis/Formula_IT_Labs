@@ -25,7 +25,7 @@ print(task())
 
 # Файл для задания 2 не загрузился почему-то отдельно, поэтому добавлю как часть этого
 
-# PY1_Lab4_Task2_CSV_to_JSON_convert.py
+# PY1_Lab4_Task2_CSV_to_JSON_convert_ver.py
 
 # TODO импортировать необходимые молули
 import json, csv
@@ -36,14 +36,9 @@ OUTPUT_FILENAME = "output.json"
 
 def task() -> None:
 
-    list_of_dicts = []
-
     with open(INPUT_FILENAME, 'r') as file:
-        reader = csv.DictReader(file, delimiter = ',', lineterminator = "\r\n")
-        # Чтение данных
-        for row in reader:
-            list_of_dicts.append(row)
-
+        # UPDATE: list comprehension
+        list_of_dicts = [row for row in csv.DictReader(file, delimiter = ',', lineterminator = "\r\n")]
         #print(list_of_dicts)
 
     # Запись данных в файл в формате JSON
